@@ -82,6 +82,8 @@ export default function HomeScreen({ navigation }) {
                   <Text style={styles.password}>•••••••• (tap to copy)</Text>
                 </TouchableOpacity>
 
+                <Text style={styles.notes}>{item.notes}</Text>
+
                 <TouchableOpacity onPress={() => handleDelete(index)}>
                   <Ionicons name="trash-outline" size={24} color="red" />
                 </TouchableOpacity>
@@ -114,6 +116,7 @@ const styles = StyleSheet.create({
   site: { fontWeight: 'bold', fontSize: 16 },
   username: { color: '#333', marginTop: 5 },
   password: { color: '#777', marginTop: 5 },
+  notes: { color: '#333', fontStyle: 'italic' },
   buttonContainer: {
     marginBottom: 10,
   },

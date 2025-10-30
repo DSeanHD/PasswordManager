@@ -6,6 +6,7 @@ export default function AddScreen({ navigation }) {
   const [site, setSite] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [notes, setNotes] = useState('');
 
   const handleSave = async () => {
     if (!site || !username || !password) {
@@ -15,12 +16,13 @@ export default function AddScreen({ navigation }) {
 
     try {
       const existing = (await getData('passwords')) || []; // ✅ Use SecureStore key
-      const updated = [...existing, { site, username, password }];
+      const updated = [...existing, { site, username, password, notes }];
       await saveData('passwords', updated);
 
       setSite('');
       setUsername('');
       setPassword('');
+      setNotes('');
 
       navigation.goBack();
     } catch (error) {
@@ -43,6 +45,13 @@ export default function AddScreen({ navigation }) {
         value={password}
         onChangeText={setPassword}
         secureTextEntry
+      />
+
+      <Text style={styles.label}>Notes</Text>
+      <TextInput 
+        style={styles.input}
+        value={notes}
+        onChangeText={setNotes}
       />
 
       <Button title="Save Password" onPress={handleSave} />
