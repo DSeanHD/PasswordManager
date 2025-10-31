@@ -48,7 +48,8 @@ export default function AddScreen({ navigation }) {
       />
 
       <Text style={styles.label}>Notes</Text>
-      <TextInput 
+      <TextInput
+        multiline 
         style={styles.input}
         value={notes}
         onChangeText={setNotes}
